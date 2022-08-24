@@ -17,6 +17,10 @@ const ItemCount = ({ stock,inicial }) => {
         }
       };
 
+      const buy = ()=> {
+        alert(cantidad)
+    }
+
 
   return (
          <div className="row border my-4 mx-auto d-flex align-items-center">
@@ -37,6 +41,9 @@ const ItemCount = ({ stock,inicial }) => {
                 +
               </button>
             </div>
+
+            <button variant="primary" onClick={buy}>On Add</button>{' '}
+            
           </div>
   )
 }
