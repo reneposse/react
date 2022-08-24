@@ -1,13 +1,23 @@
-import React from 'react' ;
-import ItemCount from '../itemCount/ItemCount';
+import React,{useState,useEffect} from 'react'  
+import ItemList from '../itemList/ItemList';
  
 
-export default function ItemListContainer ({datos}){
-    return (
-        <div>
-            <span>{datos}</span>
-            <ItemCount stock="5" inicial="1"></ItemCount>
-        </div>
-    )
+const ItemListContainer = () => {
+const [datos, setDatos] = useState([]);
+
+useEffect(()=>
+{
+    fetch("https://rickandmortyapi.com/api/character")
+    .then(dataJson=>dataJson.json())
+    .then(data=>setDatos(data.results))
+},[]);
+
+  return (
+    <>
+    <ItemList datos={datos}/>
+    </>
+    
+  )
 }
 
+export default ItemListContainer
