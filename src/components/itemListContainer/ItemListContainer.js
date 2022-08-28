@@ -7,9 +7,14 @@ const [datos, setDatos] = useState([]);
 
 useEffect(()=>
 {
-    fetch("https://rickandmortyapi.com/api/character")
-    .then(dataJson=>dataJson.json())
-    .then(data=>setDatos(data.results))
+  new Promise((resolve)=>
+  {
+    setTimeout(()=>{
+      fetch("https://rickandmortyapi.com/api/character")
+      .then(dataJson=>dataJson.json())
+      .then(data=>setDatos(data.results))
+    },2000)
+  })
 },[]);
 
   return (
